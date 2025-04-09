@@ -94,7 +94,9 @@ mean(recodedData$PartisianSum)
 ```{r}
 recodedData %>% 
   group_by(ID_3)%>% 
-  summarize(MeanPartisianShip = mean(PartisianSum))
+  summarize(
+            NumberOfRespondants = n(),
+            MeanPartisianShip = mean(PartisianSum))
 ```
  
  
