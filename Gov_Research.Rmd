@@ -106,7 +106,43 @@ recodedData %>%
   try this on the other party ID variable that has more variations (like democrat, slightly democrat, very democrat, etc), and see if that makes a differenc ein the data.  
  
  
- 
+              1  1. Strong Democrat
+               2  2. Not very strong Democrat
+               3  3. Independent-Democrat
+               4  4. Independent
+               5  5. Independent-Republican
+               6  6. Not very strong Republican
+               7  7. Strong Republican
+               
+```{r}
+recodedData <- recodedData %>% 
+  mutate(Party_ID_withMore = case_when(
+    Party_ID_withMore == 1 ~ "Strong Democrat",
+    Party_ID_withMore == 2 ~ "Not very strong Democrat",
+     Party_ID_withMore == 3 ~ "Independent-Democrat",
+      Party_ID_withMore == 4 ~ "Independent",
+       Party_ID_withMore == 5 ~ "Independent-Republican",
+        Party_ID_withMore == 6 ~ "Not very strong Republican",
+         Party_ID_withMore == 7 ~ "Strong Republican"
+  )) %>% mutate(Party_ID_withMore = factor(Party_ID_withMore, 
+                                    levels = c("Strong Democrat", "Not very strong Democrat", 
+                                               "Independent-Democrat", "Independent", 
+                                               "Independent-Republican", 
+                                               "Not very strong Republican", 
+                                               "Strong Republican"))) 
+
+
+recodedData %>% 
+  group_by(Party_ID_withMore) %>% 
+  summarize( 
+    MeanPartisianShip = mean(PartisianSum), 
+    NumOfRespondants = n()
+    )
+
+
+
+```
+
  
  
 
