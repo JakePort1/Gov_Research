@@ -38,7 +38,6 @@ recodedData <- data %>%
   filter(DefenseSpending %in% c(1,2,3,4,5,6,7)) %>% 
   filter(HealthCare %in% c(1,2,3,4,5,6,7)) 
 
-
 #From here on out, only use the "recodedData" object. 
 
 str(recodedData)
@@ -63,8 +62,23 @@ To do:
  
  
   
+```{r}
+
+#this will add a new column that is the sum of all of our factors columns:
+recodedData <- recodedData %>% 
+  mutate(PartisianSum = ID_3 + Party_ID_withMore + Gaureenteeed_Job_Income + Gov_Spending + Assistance_to_Blacks + EnviorBuissTradeOff + DefenseSpending + HealthCare)
+
+head(recodedData)
+
+
+
+```
  
- 
+
+We find that the mean of the "PartisianSum" column is: 30.68238 (on a scale of 6 to 42). 
+```{r}
+mean(recodedData$PartisianSum)
+```
  
  
  
