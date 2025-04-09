@@ -7,13 +7,20 @@ date: "2025-04-07"
 
 
 
+NOTE: if you are getting a glitch when it comes to loading the data, try switching the read.table function to the one that has file.choose(). 
+
+
+
 ```{r}
 
 library(readr)
 library(dplyr)
 library(tidyverse)
 
-data <- read.table(file.choose(), header = TRUE, sep = ",")
+
+#data <- read.table("file.choose()", header = TRUE, sep = ",")
+data <- read.table("sub-data.txt", header = TRUE, sep = ",")
+
 
 colnames(data) <- c("ID_3", "Party_ID_withMore", "Gaureenteeed_Job_Income", "Gov_Spending", "Assistance_to_Blacks", "EnviorBuissTradeOff", "DefenseSpending", "HealthCare")
 
@@ -75,7 +82,7 @@ head(recodedData)
 ```
  
 
-We find that the mean of the "PartisianSum" column is: 30.68238 (on a scale of 6 to 42). 
+We find that the mean of the "PartisianSum" column is: 30.68238 (on a scale of 6 to 42). Double check if this is right
 ```{r}
 mean(recodedData$PartisianSum)
 ```
