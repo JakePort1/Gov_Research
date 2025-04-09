@@ -132,17 +132,35 @@ recodedData <- recodedData %>%
                                                "Strong Republican"))) 
 
 
-recodedData %>% 
+PartisianSummmary <- recodedData %>% 
   group_by(Party_ID_withMore) %>% 
   summarize( 
     MeanPartisianShip = mean(PartisianSum), 
     NumOfRespondants = n()
     )
 
-
+PartisianSummmary
 
 ```
 
  
+ 
+ 
+```{r}
+
+ggplot(PartisianSummmary) +
+  aes(
+    x = Party_ID_withMore,
+    y = MeanPartisianShip,
+    fill = MeanPartisianShip
+  ) +
+  geom_col() +
+  scale_fill_gradient(low = "blue", high = "red") +  # Setting low as blue and high as red
+  theme_minimal() + theme(axis.text.x = element_text(angle = 15))
+
+
+
+
+```
  
 
