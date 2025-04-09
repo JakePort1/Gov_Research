@@ -99,7 +99,9 @@ recodedData %>%
  
  
  
- 
+ Next to do: 
+
+  try this on the other party ID variable that has more variations (like democrat, slightly democrat, very democrat, etc), and see if that makes a differenc ein the data.  
  
  
  
