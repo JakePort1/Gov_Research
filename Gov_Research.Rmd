@@ -71,7 +71,7 @@ To do:
 
 #this will add a new column that is the sum of all of our factors columns:
 recodedData <- recodedData %>% 
-  mutate(PartisianSum = ID_3 + Party_ID_withMore + Gaureenteeed_Job_Income + Gov_Spending + Assistance_to_Blacks + EnviorBuissTradeOff + DefenseSpending + HealthCare)
+  mutate(PartisianSum =  Gaureenteeed_Job_Income + Gov_Spending + Assistance_to_Blacks + EnviorBuissTradeOff + DefenseSpending + HealthCare)
 
 head(recodedData)
 
@@ -80,7 +80,7 @@ head(recodedData)
 ```
  
 
-We find that the mean of the "PartisianSum" column is: 28.26746 (on a scale of 6 to 42). Double check if this is right, it changed randomly at some point idk what I did 
+We find that the mean of the "PartisianSum" column is: 28.26746 (on a scale of 7 to 42). Double check if this is right, it changed randomly at some point idk what I did 
 ```{r}
 mean(recodedData$PartisianSum)
 ```
@@ -106,7 +106,7 @@ recodedData %>%
   try this on the other party ID variable that has more variations (like democrat, slightly democrat, very democrat, etc), and see if that makes a differenc ein the data.  
  
  
-              1  1. Strong Democrat
+               1  1. Strong Democrat
                2  2. Not very strong Democrat
                3  3. Independent-Democrat
                4  4. Independent
@@ -144,23 +144,26 @@ PartisianSummmary
 ```
 
  
- 
+Plot:
  
 ```{r}
 
 ggplot(PartisianSummmary) +
-  aes(
+  aes(s
     x = Party_ID_withMore,
     y = MeanPartisianShip,
     fill = MeanPartisianShip
   ) +
   geom_col() +
-  scale_fill_gradient(low = "blue", high = "red") +  # Setting low as blue and high as red
+  scale_fill_gradient(low = "blue", high = "red") +  
   theme_minimal() + theme(axis.text.x = element_text(angle = 15))
-
-
-
 
 ```
  
+
+```{r}
+
+head(recodedData, 100)
+
+```
 
