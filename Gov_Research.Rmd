@@ -21,7 +21,7 @@ colnames(data) <- c("ID_3", "Party_ID_withMore", "Gaureenteeed_Job_Income", "Gov
 #I'm pretty sure this works 
 recodedData <- data %>% 
   mutate(Gov_Spending = case_when( 
-    Gov_Spending == 1 ~ 7, 
+    Gov_Spending == 1 ~ 7, # recodes GovSpending so that 1 is liberal and 7 is conservative
     Gov_Spending == 2 ~ 6, 
     Gov_Spending == 3 ~ 5, 
     Gov_Spending == 4 ~ 4, 
@@ -29,14 +29,14 @@ recodedData <- data %>%
     Gov_Spending == 6 ~ 2, 
     Gov_Spending == 7 ~ 1
     )) %>% 
-  filter(ID_3 %in% c(1,2,3)) %>% 
-  filter(Party_ID_withMore %in% c(1,2,3,4,5,6,7)) %>% 
+  filter(ID_3 %in% c(1,2,3)) %>%  #includes only repuvlica, democrat, and independant
+  filter(Party_ID_withMore %in% c(1,2,3,4,5,6,7)) %>% #These will include only the 1-7 coded vars 
   filter(Gaureenteeed_Job_Income %in% c(1,2,3,4,5,6,7)) %>% 
   filter(Gov_Spending %in% c(1,2,3,4,5,6,7)) %>% 
   filter(Assistance_to_Blacks %in% c(1,2,3,4,5,6,7)) %>% 
   filter(EnviorBuissTradeOff %in% c(1,2,3,4,5,6,7)) %>% 
   filter(DefenseSpending %in% c(1,2,3,4,5,6,7)) %>% 
-  filter(DefenseSpending %in% c(1,2,3,4,5,6,7)) 
+  filter(HealthCare %in% c(1,2,3,4,5,6,7)) 
 
 
 #From here on out, only use the "recodedData" object. 
@@ -48,5 +48,31 @@ head(recodedData)
 ```
 
 
-Starting the data analysis: 
+Starting the data analysis:
+
+To do: 
+ 
+ 1. create a column that has the sum of all the independant variables that we're using 
+ 
+ 2. then group by those columnsn, 
+ 
+ 3. summarise to find the mean. 
+ 
+ 4. go from there: 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
