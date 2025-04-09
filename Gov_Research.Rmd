@@ -17,9 +17,6 @@ data <- read.table(file.choose(), header = TRUE, sep = ",")
 
 colnames(data) <- c("ID_3", "Party_ID_withMore", "Gaureenteeed_Job_Income", "Gov_Spending", "Assistance_to_Blacks", "EnviorBuissTradeOff", "DefenseSpending", "HealthCare")
 
-str(data)
-
-
 
 #I'm pretty sure this works 
 recodedData <- data %>% 
@@ -42,16 +39,14 @@ recodedData <- data %>%
   filter(DefenseSpending %in% c(1,2,3,4,5,6,7)) 
 
 
+#From here on out, only use the "recodedData" object. 
 
-head(recodedData, 99)
-
-
-
-
-
-
-
-str(data)
+str(recodedData)
+head(recodedData)
 
 
 ```
+
+
+Starting the data analysis: 
+
