@@ -1,0 +1,350 @@
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                      CODEBOOK
+
+
+                         ANES 2020 Time Series Full Release
+                                          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ANES 2020 Time Series Full Release                                Page i
+
+
+                                      CONTENTS
+
+
+      item                                                                page
+
+      V201228            PRE: Party ID: Does R think of self as Democrat,    1
+      V201231x           PRE: SUMMARY: Party ID                              1
+      V201255            PRE: 7pt scale guaranteed job-income scale: self    2
+      V201246            PRE: 7pt scale spending & services: self-placeme    2
+      V201258            PRE: 7pt scale gov assistance to blacks scale: s    3
+      V201262            PRE: 7pt scale environment-business tradeoff: se    3
+      V201249            PRE: 7pt scale defense spending: self-placement     4
+      V201252            PRE: 7pt scale gov-private medical insurance sca    4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   April 9, 2025
+
+
+
+      ANES 2020 Time Series Full Release                                Page 1
+
+
+      V201228            PRE: Party ID: Does R think of self as Democrat, Republican, or Independent
+
+           VALUE  LABEL
+              -9  -9. Refused
+              -8  -8. Don't know
+              -4  -4. Technical error
+               0  0. No preference {VOL - video/phone only}
+               1  1. Democrat
+               2  2. Republican
+               3  3. Independent
+               5  5. Other party {SPECIFY}
+
+           Data type: numeric
+           Minimum code defined as valid: 0
+           Record/columns: 1/1-2
+
+      ________________________________________________________________________
+
+      V201231x           PRE: SUMMARY: Party ID
+
+           VALUE  LABEL
+              -9  -9. Refused
+              -8  -8. Don't know
+               1  1. Strong Democrat
+               2  2. Not very strong Democrat
+               3  3. Independent-Democrat
+               4  4. Independent
+               5  5. Independent-Republican
+               6  6. Not very strong Republican
+               7  7. Strong Republican
+
+           Data type: numeric
+           Minimum code defined as valid: 0
+           Record/columns: 1/4-5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   April 9, 2025
+
+
+
+      ANES 2020 Time Series Full Release                                Page 2
+
+
+      V201255            PRE: 7pt scale guaranteed job-income scale: self-placement
+
+           VALUE  LABEL
+              -9  -9. Refused
+              -8  -8. Don't know
+               1  1. Government should see to jobs and standard of living
+               2  2.
+               3  3.
+               4  4.
+               5  5.
+               6  6.
+               7  7. Government should let each person get ahead on own
+              99  99. Haven't thought much about this
+
+           Data type: numeric
+           Minimum code defined as valid: 0
+           Record/columns: 1/7-8
+
+      ________________________________________________________________________
+
+      V201246            PRE: 7pt scale spending & services: self-placement
+
+           VALUE  LABEL
+              -9  -9. Refused
+               1  1. Government should provide many fewer services
+               2  2.
+               3  3.
+               4  4.
+               5  5.
+               6  6.
+               7  7. Government should provide many more services
+              99  99. Haven't thought much about this
+
+           Data type: numeric
+           Minimum code defined as valid: 0
+           Record/columns: 1/10-11
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   April 9, 2025
+
+
+
+      ANES 2020 Time Series Full Release                                Page 3
+
+
+      V201258            PRE: 7pt scale gov assistance to blacks scale: self-placement
+
+           VALUE  LABEL
+              -9  -9. Refused
+              -8  -8. Don't know
+               1  1. Government should help blacks
+               2  2.
+               3  3.
+               4  4.
+               5  5.
+               6  6.
+               7  7. Blacks should help themselves
+              99  99. Haven't thought much about this
+
+           Data type: numeric
+           Minimum code defined as valid: 0
+           Record/columns: 1/13-14
+
+      ________________________________________________________________________
+
+      V201262            PRE: 7pt scale environment-business tradeoff: self-placement
+
+           VALUE  LABEL
+              -9  -9. Refused
+              -8  -8. Don't know
+               1  1. Tougher regulations on business needed to protect environment
+               2  2.
+               3  3.
+               4  4.
+               5  5.
+               6  6.
+               7  7. Regulations to protect environment already too much a burden on business
+              99  99. Haven't thought much about this
+
+           Data type: numeric
+           Minimum code defined as valid: 0
+           Record/columns: 1/16-17
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   April 9, 2025
+
+
+
+      ANES 2020 Time Series Full Release                                Page 4
+
+
+      V201249            PRE: 7pt scale defense spending: self-placement
+
+           VALUE  LABEL
+              -9  -9. Refused
+              -8  -8. Don't know
+               1  1. Greatly decrease defense spending
+               2  2.
+               3  3.
+               4  4.
+               5  5.
+               6  6.
+               7  7. Greatly increase defense spending
+              99  99. Haven't thought much about this
+
+           Data type: numeric
+           Minimum code defined as valid: 0
+           Record/columns: 1/19-20
+
+      ________________________________________________________________________
+
+      V201252            PRE: 7pt scale gov-private medical insurance scale: self-placement
+
+           VALUE  LABEL
+              -9  -9. Refused
+              -8  -8. Don't know
+               1  1. Government insurance plan
+               2  2.
+               3  3.
+               4  4.
+               5  5.
+               6  6.
+               7  7. Private insurance plan
+              99  99. Haven't thought much about this
+
+           Data type: numeric
+           Minimum code defined as valid: 0
+           Record/columns: 1/22-23
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   April 9, 2025

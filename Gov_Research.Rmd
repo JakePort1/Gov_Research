@@ -1,0 +1,57 @@
+---
+title: "GovResearchTesting"
+output: html_document
+date: "2025-04-07"
+---
+
+
+
+
+```{r}
+
+library(readr)
+library(dplyr)
+library(tidyverse)
+
+data <- read.table(file.choose(), header = TRUE, sep = ",")
+
+colnames(data) <- c("ID_3", "Party_ID_withMore", "Gaureenteeed_Job_Income", "Gov_Spending", "Assistance_to_Blacks", "EnviorBuissTradeOff", "DefenseSpending", "HealthCare")
+
+str(data)
+
+
+
+#I'm pretty sure this works 
+recodedData <- data %>% 
+  mutate(Gov_Spending = case_when( 
+    Gov_Spending == 1 ~ 7, 
+    Gov_Spending == 2 ~ 6, 
+    Gov_Spending == 3 ~ 5, 
+    Gov_Spending == 4 ~ 4, 
+    Gov_Spending == 5 ~ 3, 
+    Gov_Spending == 6 ~ 2, 
+    Gov_Spending == 7 ~ 1
+    )) %>% 
+  filter(ID_3 %in% c(1,2,3)) %>% 
+  filter(Party_ID_withMore %in% c(1,2,3,4,5,6,7)) %>% 
+  filter(Gaureenteeed_Job_Income %in% c(1,2,3,4,5,6,7)) %>% 
+  filter(Gov_Spending %in% c(1,2,3,4,5,6,7)) %>% 
+  filter(Assistance_to_Blacks %in% c(1,2,3,4,5,6,7)) %>% 
+  filter(EnviorBuissTradeOff %in% c(1,2,3,4,5,6,7)) %>% 
+  filter(DefenseSpending %in% c(1,2,3,4,5,6,7)) %>% 
+  filter(DefenseSpending %in% c(1,2,3,4,5,6,7)) 
+
+
+
+head(recodedData, 99)
+
+
+
+
+
+
+
+str(data)
+
+
+```
