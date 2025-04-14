@@ -136,12 +136,25 @@ PartisianSummmary <- recodedData %>%
   group_by(Party_ID_withMore) %>% 
   summarize( 
     MeanPartisianShip = mean(PartisianSum), 
-    NumOfRespondants = n()
+    n = n(),
+    SD = sd(PartisianSum)
     )
 
-PartisianSummmary
+
+PartisianSummmary <- PartisianSummmary%>% 
+  mutate(error = 1.96 * (SD / (sqrt(n))) )
+
+PartisianSummmary 
+
+
+
+
 
 ```
+
+
+
+
 
  
 Plot:
@@ -149,14 +162,24 @@ Plot:
 ```{r}
 
 ggplot(PartisianSummmary) +
-  aes(s
+  aes(
     x = Party_ID_withMore,
     y = MeanPartisianShip,
     fill = MeanPartisianShip
   ) +
   geom_col() +
+  geom_errorbar(
+    aes( 
+      ymin = MeanPartisianShip - error,
+      ymax = MeanPartisianShip + error
+      ), 
+    width = 0.2
+  ) +
   scale_fill_gradient(low = "blue", high = "red") +  
   theme_minimal() + theme(axis.text.x = element_text(angle = 15))
+
+
+
 
 ```
  
