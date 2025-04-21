@@ -16,8 +16,8 @@ library(dplyr)
 library(tidyverse)
 
 
-data <- read.table(file.choose(), header = TRUE, sep = ",")
-#data <- read.table("sub-data.txt", header = TRUE, sep = ",")
+#data <- read.table(file.choose(), header = TRUE, sep = ",")
+data <- read.table("sub-data.txt", header = TRUE, sep = ",")
 
 
 colnames(data) <- c("ID_3", "Party_ID_withMore", "Gaureenteeed_Job_Income", "Gov_Spending", "Assistance_to_Blacks", "EnviorBuissTradeOff", "DefenseSpending", "HealthCare")
@@ -115,7 +115,8 @@ recodedData %>%
                7  7. Strong Republican
                
 ```{r}
-recodedData <- recodedData %>% 
+recodedData <- recodedData %>%  
+  mutate(Party_ID_withMore = as.numeric(Party_ID_withMore)) %>%
   mutate(Party_ID_withMore = case_when(
     Party_ID_withMore == 1 ~ "Strong Democrat",
     Party_ID_withMore == 2 ~ "Not very strong Democrat",
@@ -132,22 +133,33 @@ recodedData <- recodedData %>%
                                                "Strong Republican"))) 
 
 
+recodedData
+PartisianSummmary
+
 PartisianSummmary <- recodedData %>% 
   group_by(Party_ID_withMore) %>% 
   summarize( 
-    MeanPartisianShip = mean(PartisianSum), 
+    MeanPartisianShip = round(mean(PartisianSum),2),
     n = n(),
-    SD = sd(PartisianSum)
+    SD = round(sd(PartisianSum),2)
     )
-
-
-PartisianSummmary <- PartisianSummmary%>% 
-  mutate(error = 1.96 * (SD / (sqrt(n))) )
 
 PartisianSummmary 
 
 
+PartisianSummmary <- PartisianSummmary %>% 
+  mutate(error = 1.96 *(SD / (sqrt(n))))
 
+PartisianSummmary <- PartisianSummmary %>% 
+  mutate(error = round(error,3))
+
+
+PartisianSummmary
+
+colnames(PartisianSummmary)[colnames(PartisianSummmary) == "Party_ID_withMore"] <- "Party_ID_Self_Report"
+colnames(PartisianSummmary)[colnames(PartisianSummmary) == "MeanPartisianShip"] <- "Mean Partisanship"
+
+PartisianSummmary
 
 
 ```
@@ -178,15 +190,93 @@ ggplot(PartisianSummmary) +
   scale_fill_gradient(low = "blue", high = "red") +  
   theme_minimal() + theme(axis.text.x = element_text(angle = 15))
 
-
-
-
 ```
  
 
 ```{r}
 
 head(recodedData, 100)
+
+```
+
+
+
+```{r}
+
+
+
+reRecodedData_Numeric <- recodedData %>% 
+  mutate(Party_ID_withMore = case_when(
+    Party_ID_withMore == "Strong Democrat" ~ 1,
+    Party_ID_withMore == "Not very strong Democrat" ~ 2,
+    Party_ID_withMore == "Independent-Democrat" ~ 3,
+    Party_ID_withMore == "Independent" ~ 4,
+    Party_ID_withMore == "Independent-Republican" ~ 5,
+    Party_ID_withMore == "Not very strong Republican" ~ 6,
+    Party_ID_withMore == "Strong Republican" ~ 7,
+    TRUE ~ NA_real_
+  ))
+
+regModel = lm((PartisianSum) ~ Party_ID_withMore, data = recodedData)
+regMode_Numeric = lm((PartisianSum) ~ Party_ID_withMore, data = reRecodedData_Numeric)
+
+
+
+summary(regModel)
+summary(regMode_Numeric)
+
+#do predicted values 
+
+
+regModel_Numeric <- lm(PartisianSum ~ Party_ID_withMore, data = reRecodedData_Numeric)
+
+reRecodedData_Numeric <- reRecodedData_Numeric %>%
+  mutate(Predicted = predict(regModel_Numeric))
+
+library(ggplot2)
+
+ggplot(reRecodedData_Numeric, aes(x = Party_ID_withMore, y = PartisianSum)) +
+  geom_point(alpha = 0.5) +  # actual points
+  geom_line(aes(y = Predicted), color = "red", size = 1.2) +  # predicted line
+  theme_minimal() +
+  labs(
+    title = "Regression of Partisan Sum by Party ID",
+    x = "Party ID",
+    y = "Partisan Sum"
+  )
+
+
+ggplot(reRecodedData_Numeric) +
+  aes(
+    x = Party_ID_withMore,
+    y = PartisianSum,
+    colour = Party_ID_withMore
+  ) +
+  geom_jitter() +
+  scale_color_gradient() +
+  theme_minimal()
+
+
+
+
+
+
+```
+
+
+
+```{r}
+
+
+
+ggplot(reRecodedData, aes(x = Party_ID_withMore,  y = PartisianSum)) + 
+  geom_point(shape = 1) + 
+ geom_jitter(width = .2, height = .2, shape = 1) + 
+  geom_smooth(method = lm)
+
+
+
+
 
 ```
 
